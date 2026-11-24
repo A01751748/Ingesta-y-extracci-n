@@ -391,3 +391,21 @@ def test_contrato_convierte_vacio_en_null():
     from ingesta.contrato import Concepto, Impuesto
     assert Concepto(descuento="", unidad="  ").model_dump(include={"descuento", "unidad"}) == {"descuento": None, "unidad": None}
     assert Impuesto(importe="").importe is None
+
+
+# ---- Los ejemplos y la guía que usan los demás equipos
+@pytest.mark.parametrize("ejemplo,esquema", [
+    ("ok_xml", "extraccion"), ("ok_pdf", "extraccion"), ("error", "extraccion"),
+    ("mensaje_documento", "mensaje_documento"), ("mensaje_resultado", "mensaje_resultado")])
+def test_ejemplos_publicados(ejemplo, esquema):
+    jsonschema.validate(json.loads((CARPETA / "ejemplos" / f"{ejemplo}.json").read_text()),
+                        json.loads((CARPETA / f"{esquema}.v1.schema.json").read_text()))
+
+
+def test_guia_menciona_todos_los_campos_y_codigos():
+    from typing import get_args
+    from ingesta import contrato as c
+    guia = (CARPETA.parent / "INTEGRACION.md").read_text(encoding="utf-8")
+    nombres = [*c.Campos.model_fields, *c.Extraccion.model_fields, *get_args(c.Codigo), *get_args(c.Origen),
+               *get_args(c.Tipo), *get_args(c.Ruta), *get_args(c.Advertencia.model_fields["codigo"].annotation)]
+    assert [n for n in nombres if f"`{n}`" not in guia] == []

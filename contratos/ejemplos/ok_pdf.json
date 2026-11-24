@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.1.0",
+  "documento_id": "doc-ejemplo",
+  "lote_id": "lote-ejemplo",
+  "recibido_en": "2026-10-06T15:00:00Z",
+  "sha256": "78f5dff24a8623186de9fa4fc4cbf2eabc71128a3815cb701080ec7146d44268",
+  "tipo_detectado": "pdf_texto",
+  "ruta": "modelo_texto",
+  "version_cfdi": null,
+  "estado_extraccion": "ok",
+  "error": null,
+  "paginas": 1,
+  "modelo": {
+    "nombre": "falso",
+    "version_prompt": "v1"
+  },
+  "duracion_ms": 144,
+  "advertencias": [
+    {
+      "codigo": "VALOR_NO_IMPRESO",
+      "campo": "moneda",
+      "detalle": "lo propuso el modelo y no se encontró en el documento",
+      "valor_descartado": "MXN"
+    }
+  ],
+  "campos": {
+    "uuid": {
+      "valor": "ABCD0707-7C06-4408-AA09-D8E8C6BFF720",
+      "origen": "texto_pdf",
+      "confianza": 0.95,
+      "pagina": 1,
+      "bbox": [
+        0.17098,
+        0.03346,
+        0.55422,
+        0.05141
+      ],
+      "evidencia": "con etiqueta; probabilidad 0.99"
+    },
+    "rfc_emisor": {
+      "valor": "AAA010101AAA",
+      "origen": "texto_pdf",
+      "confianza": 0.95,
+      "pagina": 1,
+      "bbox": [
+        0.1761,
+        0.39736,
+        0.31176,
+        0.41531
+      ],
+      "evidencia": "con etiqueta; probabilidad 0.99"
+    },
+    "rfc_receptor": {
+      "valor": "BBB010101BB1",
+      "origen": "texto_pdf",
+      "confianza": 0.95,
+      "pagina": 1,
+      "bbox": [
+        0.18845,
+        0.41303,
+        0.32206,
+        0.43098
+      ],
+      "evidencia": "con etiqueta; probabilidad 0.99"
+    },
+    "fecha_emision": {
+      "valor": "2026-10-05T10:00:00",
+      "origen": "texto_pdf",
+      "confianza": 0.95,
+      "pagina": 1,
+      "bbox": [
+        0.25014,
+        0.366,
+        0.42793,
+        0.38395
+      ],
+      "evidencia": "con etiqueta; probabilidad 0.99"
+    },
+    "subtotal": {
+      "valor": "2500.00",
+      "origen": "texto_pdf",
+      "confianza": 0.95,
+      "pagina": 1,
+      "bbox": [
+        0.83978,
+        0.20309,
+        0.89211,
+        0.21614
+      ],
+      "evidencia": "con etiqueta; probabilidad 0.99"
+    },
+    "total": {
+      "valor": "2770.00",
+      "origen": "texto_pdf",
+      "confianza": 0.95,
+      "pagina": 1,
+      "bbox": [
+        0.12888,
+        0.42871,
+        0.20084,
+        0.44666
+      ],
+      "evidencia": "con etiqueta; probabilidad 0.99"
+    },
+    "moneda": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": "descartado: el documento no lo imprime"
+    },
+    "tipo_cambio": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "descuento": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "serie": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "folio": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "tipo_comprobante": {
+      "valor": "I",
+      "origen": "texto_pdf",
+      "confianza": 0.95,
+      "pagina": 1,
+      "bbox": null,
+      "evidencia": "rótulo impreso"
+    },
+    "nombre_emisor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "nombre_receptor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "regimen_emisor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "regimen_receptor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "domicilio_receptor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "lugar_expedicion": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "uso_cfdi": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "metodo_pago": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "forma_pago": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "fecha_timbrado": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "sello_ultimos8": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    }
+  },
+  "conceptos": [
+    {
+      "cantidad": "2",
+      "clave_prod_serv": "43211500",
+      "clave_unidad": "H87",
+      "unidad": "Pieza",
+      "descripcion": "Computadoras",
+      "objeto_imp": null,
+      "valor_unitario": "1000.00",
+      "importe": "2000.00",
+      "descuento": null,
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.16",
+          "base": null,
+          "importe": "320.00",
+          "origen": "texto_pdf",
+          "confianza": 0.8
+        }
+      ],
+      "retenciones": [],
+      "origen": "texto_pdf",
+      "confianza": 0.95
+    },
+    {
+      "cantidad": "1",
+      "clave_prod_serv": "84111506",
+      "clave_unidad": "E48",
+      "unidad": "Servicio",
+      "descripcion": "Asesoria",
+      "objeto_imp": null,
+      "valor_unitario": "500.00",
+      "importe": "500.00",
+      "descuento": null,
+      "traslados": [],
+      "retenciones": [
+        {
+          "impuesto": "001",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.1",
+          "base": null,
+          "importe": "50.00",
+          "origen": "texto_pdf",
+          "confianza": 0.8
+        }
+      ],
+      "origen": "texto_pdf",
+      "confianza": 0.95
+    }
+  ],
+  "traslados": [],
+  "retenciones": [],
+  "impuestos_locales": [],
+  "cfdi_relacionados": []
+}

@@ -268,3 +268,75 @@ def test_lambda_reporta_solo_las_fallas(e):
 def test_permisos_minimos(e):
     with psycopg.connect(e.cfg.dsn) as c, pytest.raises(psycopg.errors.InsufficientPrivilege):
         c.execute("DELETE FROM documentos")
+
+
+def test_sql_de_la_guia(e):
+    """Corre cada bloque SQL de INTEGRACION.md, con los roles propuestos."""
+    import re
+    guia = (Path(__file__).parent.parent / "INTEGRACION.md").read_text(encoding="utf-8")
+    bloques = re.findall(r"```sql\n(.*?)```", guia, re.S)
+    assert len(bloques) == 4
+    orq, lectura, validar, permisos = bloques
+
+    def correr(c, sql, **k):
+        r = []
+        for s in re.sub(r"--.*", "", sql).split(";"):
+            if s.strip():
+                r.append(c.execute(re.sub(r"(?<!:):(\w+)", r"%(\1)s", s), k))
+        return r
+    d = uuid.uuid4().hex
+    with psycopg.connect(ADMIN) as c:
+        for rol in ("orquestador", "validador"):
+            if not c.execute("SELECT 1 FROM pg_roles WHERE rolname=%s", (rol,)).fetchone():
+                c.execute(f"CREATE ROLE {rol}")
+        correr(c, permisos)
+    k = dict(documento_id=d, lote_id="g", bucket="facturas", key=d, sha256=hashlib.sha256(XML).hexdigest(), intento=1)
+    alta, avance, agotado, reproceso = [s + ";" for s in orq.split(";") if s.strip()]
+    with psycopg.connect(ADMIN) as c:
+        c.execute("SET ROLE orquestador")
+        correr(c, alta, **k)
+        assert correr(c, avance, **k)[0].fetchone()[1] >= 1
+    e.aws.s3.put_object(Bucket="facturas", Key=d, Body=XML)
+    m = MensajeDocumento(**k)
+    e.proc().procesar(m.model_dump_json())
+    with psycopg.connect(ADMIN) as c:
+        c.execute("SET ROLE validador")
+        assert correr(c, lectura, **k)[0].fetchone()[0]["campos"]["total"]["valor"] == "1060.00"
+        v = dict(k, nuevo="error", codigo="X", detalle="x")
+        assert correr(c, validar, **v)[0].rowcount == 1
+        assert correr(c, validar, **v)[0].rowcount == 0
+    with psycopg.connect(ADMIN) as c:
+        c.execute("SET ROLE orquestador")
+        assert correr(c, agotado, **k)[0].rowcount == 0
+        assert correr(c, reproceso, **k)[0].fetchone() == (2,)
+    assert e.proc().procesar(m.model_copy(update={"intento": 2}).model_dump_json()) == BORRAR
+    assert e.doc(m) == "validando"
+
+
+def test_python_de_la_guia(e):
+    """Ejecuta el código copiable: el orquestador encola y el validador atiende."""
+    import re
+    guia = (Path(__file__).parent.parent / "INTEGRACION.md").read_text(encoding="utf-8")
+    ns = {}
+    for b in re.findall(r"```python\n(.*?)```", guia, re.S):
+        exec(b, ns)
+    datos = XML
+    m = e.alta(datos)
+    # S3 acepta el checksum convertido y rechaza uno ajeno
+    e.aws.s3.put_object(Bucket="facturas", Key=m.key, Body=datos, ChecksumSHA256=ns["hex_a_base64"](m.sha256))
+    fila = dict(m.model_dump(), s3_key=m.key)
+    ns["encolar"](e.aws.sqs, e.cfg.q_ingesta, fila)
+    assert worker.atender(e.aws.sqs, e.cfg.q_ingesta, e.proc().procesar, 30, 2) == 1
+    malo = e.alta(b"hola")
+    e.proc().procesar(malo.model_dump_json())
+    vistos = []
+
+    def validar(d):
+        vistos.append(d["campos"]["total"]["valor"])
+        return "listo", None, None
+    for _ in range(3):
+        ns["atender"](type("S", (), {"receive_message": lambda s, **k: e.aws.sqs.receive_message(**{**k, "WaitTimeSeconds": 1}),
+                                     "delete_message": lambda s, **k: e.aws.sqs.delete_message(**k)})(),
+                      lambda: psycopg.connect(ADMIN), e.cfg.q_validacion, validar)
+    assert vistos == ["1060.00"] and e.doc(m) == "listo" and e.doc(malo) == "error"
+    assert e.recibir(e.cfg.q_validacion) == []
