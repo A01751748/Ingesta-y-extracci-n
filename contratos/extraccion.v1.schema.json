@@ -1,0 +1,1167 @@
+{
+  "$defs": {
+    "Advertencia": {
+      "additionalProperties": false,
+      "properties": {
+        "codigo": {
+          "enum": [
+            "VALOR_NO_IMPRESO",
+            "VALORES_EN_CONFLICTO",
+            "POSIBLE_NOTA_DE_CREDITO"
+          ],
+          "title": "Codigo",
+          "type": "string"
+        },
+        "campo": {
+          "description": "p. ej. moneda, conceptos[0].descuento, traslados[1].importe",
+          "title": "Campo",
+          "type": "string"
+        },
+        "detalle": {
+          "title": "Detalle",
+          "type": "string"
+        },
+        "valor_descartado": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Lo que propuso el modelo; no usar como dato",
+          "title": "Valor Descartado"
+        }
+      },
+      "required": [
+        "codigo",
+        "campo",
+        "detalle"
+      ],
+      "title": "Advertencia",
+      "type": "object"
+    },
+    "Campo": {
+      "additionalProperties": false,
+      "properties": {
+        "valor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valor"
+        },
+        "origen": {
+          "anyOf": [
+            {
+              "enum": [
+                "xml",
+                "qr",
+                "cadena",
+                "texto_pdf",
+                "ocr",
+                "modelo"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Origen"
+        },
+        "confianza": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confianza",
+          "type": "number"
+        },
+        "pagina": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pagina"
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bbox"
+        },
+        "evidencia": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Por qué se asignó esa confianza",
+          "title": "Evidencia"
+        }
+      },
+      "title": "Campo",
+      "type": "object"
+    },
+    "Campos": {
+      "additionalProperties": false,
+      "properties": {
+        "uuid": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "rfc_emisor": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "rfc_receptor": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "fecha_emision": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "subtotal": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "total": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "moneda": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "tipo_cambio": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "descuento": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "serie": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "folio": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "tipo_comprobante": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "nombre_emisor": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "nombre_receptor": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "regimen_emisor": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "regimen_receptor": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "domicilio_receptor": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "lugar_expedicion": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "uso_cfdi": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "metodo_pago": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "forma_pago": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "fecha_timbrado": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        },
+        "sello_ultimos8": {
+          "$ref": "#/$defs/Campo",
+          "default": {
+            "valor": null,
+            "origen": null,
+            "confianza": 0.0,
+            "pagina": null,
+            "bbox": null,
+            "evidencia": null
+          }
+        }
+      },
+      "title": "Campos",
+      "type": "object"
+    },
+    "Concepto": {
+      "additionalProperties": false,
+      "properties": {
+        "cantidad": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cantidad"
+        },
+        "clave_prod_serv": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clave Prod Serv"
+        },
+        "clave_unidad": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clave Unidad"
+        },
+        "unidad": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unidad"
+        },
+        "descripcion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Descripcion"
+        },
+        "objeto_imp": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Objeto Imp"
+        },
+        "valor_unitario": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valor Unitario"
+        },
+        "importe": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Importe"
+        },
+        "descuento": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Descuento"
+        },
+        "traslados": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Impuesto"
+          },
+          "title": "Traslados",
+          "type": "array"
+        },
+        "retenciones": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Impuesto"
+          },
+          "title": "Retenciones",
+          "type": "array"
+        },
+        "origen": {
+          "anyOf": [
+            {
+              "enum": [
+                "xml",
+                "qr",
+                "cadena",
+                "texto_pdf",
+                "ocr",
+                "modelo"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Origen"
+        },
+        "confianza": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confianza",
+          "type": "number"
+        }
+      },
+      "title": "Concepto",
+      "type": "object"
+    },
+    "ErrorDoc": {
+      "additionalProperties": false,
+      "properties": {
+        "codigo": {
+          "enum": [
+            "ILEGIBLE",
+            "PDF_CIFRADO",
+            "TIPO_NO_SOPORTADO",
+            "XML_INVALIDO",
+            "NO_ES_CFDI",
+            "VARIAS_FACTURAS",
+            "PROCESAMIENTO_FALLIDO"
+          ],
+          "title": "Codigo",
+          "type": "string"
+        },
+        "detalle": {
+          "title": "Detalle",
+          "type": "string"
+        },
+        "reintentable": {
+          "title": "Reintentable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "codigo",
+        "detalle",
+        "reintentable"
+      ],
+      "title": "ErrorDoc",
+      "type": "object"
+    },
+    "Impuesto": {
+      "additionalProperties": false,
+      "properties": {
+        "impuesto": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impuesto"
+        },
+        "tipo_factor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tipo Factor"
+        },
+        "tasa_o_cuota": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tasa O Cuota"
+        },
+        "base": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Base"
+        },
+        "importe": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Importe"
+        },
+        "origen": {
+          "anyOf": [
+            {
+              "enum": [
+                "xml",
+                "qr",
+                "cadena",
+                "texto_pdf",
+                "ocr",
+                "modelo"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Origen"
+        },
+        "confianza": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confianza",
+          "type": "number"
+        }
+      },
+      "title": "Impuesto",
+      "type": "object"
+    },
+    "ImpuestoLocal": {
+      "additionalProperties": false,
+      "properties": {
+        "clase": {
+          "enum": [
+            "traslado",
+            "retencion"
+          ],
+          "title": "Clase",
+          "type": "string"
+        },
+        "nombre": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nombre"
+        },
+        "tasa": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tasa"
+        },
+        "importe": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Importe"
+        }
+      },
+      "required": [
+        "clase"
+      ],
+      "title": "ImpuestoLocal",
+      "type": "object"
+    },
+    "InfoModelo": {
+      "additionalProperties": false,
+      "properties": {
+        "nombre": {
+          "title": "Nombre",
+          "type": "string"
+        },
+        "version_prompt": {
+          "title": "Version Prompt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "version_prompt"
+      ],
+      "title": "InfoModelo",
+      "type": "object"
+    },
+    "Relacionado": {
+      "additionalProperties": false,
+      "properties": {
+        "tipo_relacion": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tipo Relacion"
+        },
+        "uuid": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uuid"
+        }
+      },
+      "title": "Relacionado",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.1.0",
+      "default": "1.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "documento_id": {
+      "title": "Documento Id",
+      "type": "string"
+    },
+    "lote_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Siempre presente en el flujo por colas; null solo en la CLI",
+      "title": "Lote Id"
+    },
+    "recibido_en": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Cuándo llegó la factura, con zona. No cambia al reprocesar; null solo en la CLI",
+      "title": "Recibido En"
+    },
+    "sha256": {
+      "title": "Sha256",
+      "type": "string"
+    },
+    "tipo_detectado": {
+      "default": "desconocido",
+      "enum": [
+        "xml",
+        "pdf_texto",
+        "pdf_escaneado",
+        "pdf_xml_embebido",
+        "imagen",
+        "desconocido"
+      ],
+      "title": "Tipo Detectado",
+      "type": "string"
+    },
+    "ruta": {
+      "default": "ninguna",
+      "enum": [
+        "xml",
+        "modelo_texto",
+        "modelo_ocr",
+        "ninguna"
+      ],
+      "title": "Ruta",
+      "type": "string"
+    },
+    "version_cfdi": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Version Cfdi"
+    },
+    "estado_extraccion": {
+      "enum": [
+        "ok",
+        "error"
+      ],
+      "title": "Estado Extraccion",
+      "type": "string"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ErrorDoc"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "paginas": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Paginas"
+    },
+    "modelo": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/InfoModelo"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "duracion_ms": {
+      "default": 0,
+      "title": "Duracion Ms",
+      "type": "integer"
+    },
+    "advertencias": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Advertencia"
+      },
+      "title": "Advertencias",
+      "type": "array"
+    },
+    "campos": {
+      "$ref": "#/$defs/Campos",
+      "default": {
+        "uuid": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "rfc_emisor": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "rfc_receptor": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "fecha_emision": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "subtotal": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "total": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "moneda": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "tipo_cambio": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "descuento": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "serie": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "folio": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "tipo_comprobante": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "nombre_emisor": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "nombre_receptor": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "regimen_emisor": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "regimen_receptor": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "domicilio_receptor": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "lugar_expedicion": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "uso_cfdi": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "metodo_pago": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "forma_pago": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "fecha_timbrado": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        },
+        "sello_ultimos8": {
+          "bbox": null,
+          "confianza": 0.0,
+          "evidencia": null,
+          "origen": null,
+          "pagina": null,
+          "valor": null
+        }
+      }
+    },
+    "conceptos": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Concepto"
+      },
+      "title": "Conceptos",
+      "type": "array"
+    },
+    "traslados": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Impuesto"
+      },
+      "title": "Traslados",
+      "type": "array"
+    },
+    "retenciones": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Impuesto"
+      },
+      "title": "Retenciones",
+      "type": "array"
+    },
+    "impuestos_locales": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ImpuestoLocal"
+      },
+      "title": "Impuestos Locales",
+      "type": "array"
+    },
+    "cfdi_relacionados": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Relacionado"
+      },
+      "title": "Cfdi Relacionados",
+      "type": "array"
+    }
+  },
+  "required": [
+    "documento_id",
+    "sha256",
+    "estado_extraccion"
+  ],
+  "title": "Extraccion",
+  "type": "object"
+}

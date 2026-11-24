@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xmlns:implocal="http://www.sat.gob.mx/implocal" Version="4.0" Serie="A" Folio="10" Fecha="2026-10-05T10:00:00" SubTotal="1000.00" Moneda="USD" TipoCambio="18.5000" Total="1060.00" TipoDeComprobante="I" MetodoPago="PUE" FormaPago="03" LugarExpedicion="01000" Sello="AAAAAAAAbcd+/1==">
+<cfdi:CfdiRelacionados TipoRelacion="04"><cfdi:CfdiRelacionado UUID="99999999-9999-4999-8999-999999999999"/></cfdi:CfdiRelacionados>
+<cfdi:Emisor Rfc="AAA010101AAA" Nombre="Emisor Ficticio" RegimenFiscal="601"/>
+<cfdi:Receptor Rfc="BBB010101BB1" Nombre="Banco Ficticio" DomicilioFiscalReceptor="01000" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+<cfdi:Conceptos><cfdi:Concepto Cantidad="1" ClaveProdServ="84111506" ClaveUnidad="E48" Descripcion="Servicio" ObjetoImp="02" ValorUnitario="1000.00" Importe="1000.00"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="1000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="160.00"/></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto></cfdi:Conceptos>
+<cfdi:Impuestos TotalImpuestosTrasladados="160.00" TotalImpuestosRetenidos="100.00"><cfdi:Retenciones><cfdi:Retencion Impuesto="001" Importe="100.00"/></cfdi:Retenciones><cfdi:Traslados><cfdi:Traslado Base="1000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="160.00"/></cfdi:Traslados></cfdi:Impuestos>
+<cfdi:Complemento><implocal:ImpuestosLocales TotaldeRetenciones="0" TotaldeTraslados="0"><implocal:TrasladosLocales ImpLocTrasladado="ISH" TasadeTraslado="3.00" Importe="0.00"/></implocal:ImpuestosLocales><tfd:TimbreFiscalDigital Version="1.1" UUID="aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa" FechaTimbrado="2026-10-05T10:00:09"/></cfdi:Complemento>
+</cfdi:Comprobante>

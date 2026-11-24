@@ -1,0 +1,48 @@
+{
+  "description": "Entra a q-ingesta (lo manda el orquestador). q-gpu usa el mismo formato.",
+  "properties": {
+    "documento_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Documento Id",
+      "type": "string"
+    },
+    "lote_id": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Lote Id",
+      "type": "string"
+    },
+    "bucket": {
+      "title": "Bucket",
+      "type": "string"
+    },
+    "key": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "title": "Key",
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Sha256",
+      "type": "string"
+    },
+    "intento": {
+      "default": 1,
+      "description": "Sube en 1 solo si alguien pide reprocesar",
+      "minimum": 1,
+      "title": "Intento",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "documento_id",
+    "lote_id",
+    "bucket",
+    "key",
+    "sha256"
+  ],
+  "title": "MensajeDocumento",
+  "type": "object"
+}

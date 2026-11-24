@@ -1,0 +1,50 @@
+{
+  "description": "Sale a q-validacion: uno por documento terminado, también si terminó en error.\nLa extracción se lee de `extracciones_json`.",
+  "properties": {
+    "documento_id": {
+      "title": "Documento Id",
+      "type": "string"
+    },
+    "lote_id": {
+      "title": "Lote Id",
+      "type": "string"
+    },
+    "intento": {
+      "title": "Intento",
+      "type": "integer"
+    },
+    "schema_version": {
+      "default": "1.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "estado_extraccion": {
+      "enum": [
+        "ok",
+        "error"
+      ],
+      "title": "Estado Extraccion",
+      "type": "string"
+    },
+    "codigo_motivo": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Codigo Motivo"
+    }
+  },
+  "required": [
+    "documento_id",
+    "lote_id",
+    "intento",
+    "estado_extraccion"
+  ],
+  "title": "MensajeResultado",
+  "type": "object"
+}

@@ -1,0 +1,7 @@
+# Lambda de la etapa CPU (q-ingesta)
+FROM public.ecr.aws/lambda/python:3.12
+COPY pyproject.toml ./
+RUN python -c "import tomllib;print('\n'.join(tomllib.load(open('pyproject.toml','rb'))['project']['dependencies']))" > /tmp/req.txt \
+    && pip install --no-cache-dir -r /tmp/req.txt
+COPY ingesta ./ingesta
+CMD ["ingesta.adaptadores.lambda_ingesta.handler"]

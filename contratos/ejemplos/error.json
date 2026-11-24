@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.1.0",
+  "documento_id": "doc-ejemplo",
+  "lote_id": "lote-ejemplo",
+  "recibido_en": "2026-10-06T15:00:00Z",
+  "sha256": "8d39595f1a4ae7ac8dce2347ac8c5788ebf21889918230a3e8186d766f9c3add",
+  "tipo_detectado": "desconocido",
+  "ruta": "ninguna",
+  "version_cfdi": null,
+  "estado_extraccion": "error",
+  "error": {
+    "codigo": "TIPO_NO_SOPORTADO",
+    "detalle": "no es XML, PDF, PNG, JPG ni TIFF",
+    "reintentable": false
+  },
+  "paginas": null,
+  "modelo": null,
+  "duracion_ms": 0,
+  "advertencias": [],
+  "campos": {
+    "uuid": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "rfc_emisor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "rfc_receptor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "fecha_emision": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "subtotal": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "total": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "moneda": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "tipo_cambio": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "descuento": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "serie": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "folio": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "tipo_comprobante": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "nombre_emisor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "nombre_receptor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "regimen_emisor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "regimen_receptor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "domicilio_receptor": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "lugar_expedicion": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "uso_cfdi": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "metodo_pago": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "forma_pago": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "fecha_timbrado": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "sello_ultimos8": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    }
+  },
+  "conceptos": [],
+  "traslados": [],
+  "retenciones": [],
+  "impuestos_locales": [],
+  "cfdi_relacionados": []
+}

@@ -1,0 +1,10 @@
+.git
+.venv
+datos
+salida
+*.pdf
+*.xml
+*.png
+*.jpg
+*.jpeg
+**/__pycache__

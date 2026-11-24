@@ -1,0 +1,32 @@
+# Demo local: LocalStack (S3, SQS) + PostgreSQL + nuestros workers. Ollama corre en el host.
+# network_mode host (Linux) para alcanzar Ollama en localhost.
+x-worker: &worker
+  image: ingesta:prod
+  build: {context: ., dockerfile: docker/Dockerfile, target: prod}
+  network_mode: host
+  env_file: .env.ejemplo
+  restart: unless-stopped
+  stop_grace_period: 110s
+  depends_on:
+    postgres: {condition: service_healthy}
+    localstack: {condition: service_healthy}
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment: {POSTGRES_PASSWORD: demo, POSTGRES_DB: facturas}
+    ports: ["127.0.0.1:55432:5432"]
+    volumes:
+      - ./sql/001_frente4.sql:/docker-entrypoint-initdb.d/001.sql:ro
+      - ./demo/rol_demo.sql:/docker-entrypoint-initdb.d/002.sql:ro
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d facturas"], interval: 2s, retries: 30}
+  localstack:
+    image: localstack/localstack:3.8.1
+    environment: {SERVICES: "s3,sqs", SQS_ENDPOINT_STRATEGY: path}
+    ports: ["127.0.0.1:54566:4566"]
+    volumes: ["./demo/crear_colas.sh:/etc/localstack/init/ready.d/colas.sh:ro"]
+    healthcheck: {test: ["CMD-SHELL", "awslocal sqs get-queue-url --queue-name q-validacion"], interval: 3s, retries: 40}
+  worker-cpu: {<<: *worker, command: cpu}
+  worker-gpu: {<<: *worker, command: gpu}
+  dlq: {<<: *worker, command: dlq}
+  outbox: {<<: *worker, command: outbox}

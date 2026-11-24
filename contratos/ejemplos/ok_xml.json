@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.1.0",
+  "documento_id": "doc-ejemplo",
+  "lote_id": "lote-ejemplo",
+  "recibido_en": "2026-10-06T15:00:00Z",
+  "sha256": "bffdb508e5eb2323136efbcc8d19c887632bc5f972cf57ac4de71c7f24235c75",
+  "tipo_detectado": "xml",
+  "ruta": "xml",
+  "version_cfdi": "4.0",
+  "estado_extraccion": "ok",
+  "error": null,
+  "paginas": null,
+  "modelo": null,
+  "duracion_ms": 0,
+  "advertencias": [],
+  "campos": {
+    "uuid": {
+      "valor": "AAAAAAAA-AAAA-4AAA-8AAA-AAAAAAAAAAAA",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "rfc_emisor": {
+      "valor": "AAA010101AAA",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "rfc_receptor": {
+      "valor": "BBB010101BB1",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "fecha_emision": {
+      "valor": "2026-10-05T10:00:00",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "subtotal": {
+      "valor": "1000.00",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "total": {
+      "valor": "1060.00",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "moneda": {
+      "valor": "USD",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "tipo_cambio": {
+      "valor": "18.5000",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "descuento": {
+      "valor": null,
+      "origen": null,
+      "confianza": 0.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "serie": {
+      "valor": "A",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "folio": {
+      "valor": "10",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "tipo_comprobante": {
+      "valor": "I",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "nombre_emisor": {
+      "valor": "Emisor Ficticio",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "nombre_receptor": {
+      "valor": "Banco Ficticio",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "regimen_emisor": {
+      "valor": "601",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "regimen_receptor": {
+      "valor": "601",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "domicilio_receptor": {
+      "valor": "01000",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "lugar_expedicion": {
+      "valor": "01000",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "uso_cfdi": {
+      "valor": "G03",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "metodo_pago": {
+      "valor": "PUE",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "forma_pago": {
+      "valor": "03",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "fecha_timbrado": {
+      "valor": "2026-10-05T10:00:09",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    },
+    "sello_ultimos8": {
+      "valor": "bcd+/1==",
+      "origen": "xml",
+      "confianza": 1.0,
+      "pagina": null,
+      "bbox": null,
+      "evidencia": null
+    }
+  },
+  "conceptos": [
+    {
+      "cantidad": "1",
+      "clave_prod_serv": "84111506",
+      "clave_unidad": "E48",
+      "unidad": null,
+      "descripcion": "Servicio",
+      "objeto_imp": "02",
+      "valor_unitario": "1000.00",
+      "importe": "1000.00",
+      "descuento": null,
+      "traslados": [
+        {
+          "impuesto": "002",
+          "tipo_factor": "Tasa",
+          "tasa_o_cuota": "0.160000",
+          "base": "1000.00",
+          "importe": "160.00",
+          "origen": "xml",
+          "confianza": 1.0
+        }
+      ],
+      "retenciones": [],
+      "origen": "xml",
+      "confianza": 1.0
+    }
+  ],
+  "traslados": [
+    {
+      "impuesto": "002",
+      "tipo_factor": "Tasa",
+      "tasa_o_cuota": "0.160000",
+      "base": "1000.00",
+      "importe": "160.00",
+      "origen": "xml",
+      "confianza": 1.0
+    }
+  ],
+  "retenciones": [
+    {
+      "impuesto": "001",
+      "tipo_factor": null,
+      "tasa_o_cuota": null,
+      "base": null,
+      "importe": "100.00",
+      "origen": "xml",
+      "confianza": 1.0
+    }
+  ],
+  "impuestos_locales": [
+    {
+      "clase": "traslado",
+      "nombre": "ISH",
+      "tasa": "3.00",
+      "importe": "0.00"
+    }
+  ],
+  "cfdi_relacionados": [
+    {
+      "tipo_relacion": "04",
+      "uuid": "99999999-9999-4999-8999-999999999999"
+    }
+  ]
+}
